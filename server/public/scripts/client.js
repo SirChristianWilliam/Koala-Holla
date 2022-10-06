@@ -59,7 +59,20 @@ function getKoalas(){
 } // end getKoalas
 
 function deleteKoala(){
-  console.log('in delete koalas');
+  
+  let koalaId = $(this).data('id');
+  console.log('in delete koalas', koalaId);
+  
+  $.ajax({
+    method: 'DELETE',
+    url:  `/koalas/${koalaId}`,
+  }).then((response) => {
+    console.log('koala TERMINATED');
+    getKoalas();
+  }).catch((err) => {
+    console.log('error on delete', err);
+    res.sendStatus(500);
+  });
 }
 
 function saveKoala( newKoala ){

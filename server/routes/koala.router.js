@@ -1,4 +1,3 @@
-const { Router } = require('express');
 const express = require('express');
 const koalaRouter = express.Router();
 const pool = require('../modules/pool');
@@ -28,13 +27,21 @@ koalaRouter.get('/', (req,res) => {
 
 // DELETE
 
-// Router.delete('/:id', (req, res) => {
-//     console.log('in delete with id:' req.params.id);
-//     const koalaId = req.params.id;
+koalaRouter.delete('/:id', (req, res) => {
+    console.log('in delete with id:', req.params.id);
+    const koalaId = req.params.id;
 
-//     const sqlText = `DELETE FROM "koalas" WHERE "id" = $1;`
-//     const sqlParams = [koalaId];
+    const sqlText = `DELETE FROM "koalas" WHERE "id" = $1;`
+    const sqlParams = [koalaId];
 
-// });
+    pool.query(sqlText, sqlParams)
+        .then((dbRes) => {
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.log('delete koala failed', err);
+            res.sendStatus(500);
+          });
+});
 
 module.exports = koalaRouter;
