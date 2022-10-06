@@ -4,7 +4,8 @@ console.log( 'js' );
 $( document ).ready( function(){
   console.log( 'JQ' );
   // Establish Click Listeners
-  setupClickListeners()
+  $('#viewKoalas').on('click', '#dltBtn', deleteKoala)
+  setupClickListeners();
   // load existing koalas on page load
   koalaTransferClick();
   getKoalas();
@@ -18,11 +19,11 @@ function setupClickListeners() {
     // NOT WORKING YET :(
     // using a test object
     let koalaToSend = {
-      name: 'testName',
-      age: 'testName',
-      gender: 'testName',
-      readyForTransfer: 'testName',
-      notes: 'testName',
+      name: $('#nameIn').val(),
+      gender: $('#genderIn').val(),
+      age: $('#ageIn').val(),
+      readyForTransfer: $('#readyForTransferIn').val(),
+      notes: $('#notesIn').val()
     };
     // call saveKoala with the new obejct
     saveKoala( koalaToSend );
@@ -51,17 +52,43 @@ function getKoalas(){
             </td>
           <td>${x.notes}</td>
             <td>
-              <button id="dltBtn"> Delete </button>
+              <button id="dltBtn" data-id=${x.id}> Delete </button>
             </td>
       `)
     }
   })
 } // end getKoalas
 
+function deleteKoala(){
+  
+  let koalaId = $(this).data('id');
+  console.log('in delete koalas', koalaId);
+  
+  $.ajax({
+    method: 'DELETE',
+    url:  `/koalas/${koalaId}`,
+  }).then((response) => {
+    console.log('koala TERMINATED');
+    getKoalas();
+  }).catch((err) => {
+    console.log('error on delete', err);
+    res.sendStatus(500);
+  });
+}
+
 function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
   // ajax call to server to get koalas
- 
+  $.ajax({
+    type: 'POST',
+    url: '/koalas',
+    data: newKoala
+  }).then(function (response) {
+    console.log('response from server', response);
+    getKoalas();
+  }).catch(function (error) {
+    console.log('error from POST', error);
+  });
 }
 
 function koalaTransferClick() {
