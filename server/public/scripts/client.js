@@ -2,7 +2,7 @@
 console.log( 'js' );
 
 $( document ).ready( function(){
-  console.log( 'JQ' );
+   console.log( 'JQ' );
   // Establish Click Listeners
   $('#viewKoalas').on('click', '#dltBtn', deleteKoala)
   setupClickListeners();
@@ -69,7 +69,7 @@ function deleteKoala(evt){
     method: 'DELETE',
     url:  `/koalas/${koalaId}`,
   }).then((response) => {
-    console.log('koala TERMINATED');
+    console.log('koala TERMINATED',response);
     getKoalas();
   }).catch((err) => {
     console.log('error on delete', err);
