@@ -1,4 +1,3 @@
-const { response } = require("express");
 
 console.log( 'js' );
 
@@ -35,21 +34,21 @@ function getKoalas(){
   $('#viewKoalas').empty();
   $.ajax({
     method: 'GET',
-    url: '/addKoala'
+    url: '/koalas'
   })
   .then(function(response) {
     console.log("GET /addKoala response",response);
-    for(let x of response.length) {
+    for(let x of response) {
       $('#viewKoalas').append(`
         <tr>
-          <td>${response[i].name}</td>
-          <td>${response[i].gender}</td>
-          <td>${response[i].age}</td>
+          <td>${x.name}</td>
+          <td>${x.gender}</td>
+          <td>${x.age}</td>
             <td>
-              ${response[i].ready_to_transfer}
+              ${x.ready_to_transfer}
               <button id="MTT"> Ready? </button>
             </td>
-          <td>${response[i].notes}</td>
+          <td>${x.notes}</td>
             <td>
               <button id="dltBtn"> Delete </button>
             </td>
