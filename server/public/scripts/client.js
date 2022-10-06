@@ -42,7 +42,7 @@ function saveKoala( newKoala ){
     data: newKoala
   }).then(function (response) {
     console.log('response from server', response);
-    // refreshKoalas();
+    getKoalas();
   }).catch(function (error) {
     console.log('error from POST', error);
   });
