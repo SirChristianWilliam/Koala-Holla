@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 console.log( 'js' );
 
 $( document ).ready( function(){
@@ -30,7 +32,30 @@ function setupClickListeners() {
 function getKoalas(){
   console.log( 'in getKoalas' );
   // ajax call to server to get koalas
-  
+  $('#viewKoalas').empty();
+  $.ajax({
+    method: 'GET',
+    url: '/addKoala'
+  })
+  .then(function(response) {
+    console.log("GET /addKoala response",response);
+    for(let x of response.length) {
+      $('#viewKoalas').append(`
+        <tr>
+          <td>${response[i].name}</td>
+          <td>${response[i].gender}</td>
+          <td>${response[i].age}</td>
+            <td>
+              ${response[i].ready_to_transfer}
+              <button id="MTT"> Ready? </button>
+            </td>
+          <td>${response[i].notes}</td>
+            <td>
+              <button id="dltBtn"> Delete </button>
+            </td>
+      `)
+    }
+  })
 } // end getKoalas
 
 function saveKoala( newKoala ){
