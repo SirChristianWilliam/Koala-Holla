@@ -4,7 +4,8 @@ console.log( 'js' );
 $( document ).ready( function(){
   console.log( 'JQ' );
   // Establish Click Listeners
-  setupClickListeners()
+  $('#viewKoalas').on('click', '#dltBtn', deleteKoala)
+  setupClickListeners();
   // load existing koalas on page load
   getKoalas();
 
@@ -50,12 +51,29 @@ function getKoalas(){
             </td>
           <td>${x.notes}</td>
             <td>
-              <button id="dltBtn"> Delete </button>
+              <button id="dltBtn" data-id=${x.id}> Delete </button>
             </td>
       `)
     }
   })
 } // end getKoalas
+
+function deleteKoala(){
+  
+  let koalaId = $(this).data('id');
+  console.log('in delete koalas', koalaId);
+  
+  $.ajax({
+    method: 'DELETE',
+    url:  `/koalas/${koalaId}`,
+  }).then((response) => {
+    console.log('koala TERMINATED');
+    getKoalas();
+  }).catch((err) => {
+    console.log('error on delete', err);
+    res.sendStatus(500);
+  });
+}
 
 function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
