@@ -28,10 +28,13 @@ koalaRouter.get('/', (req,res) => {
 
 // DELETE
 
-Router.delete('/:id', (req, res) => {
-    console.log('in delete with id:' req.params.id);
-    const koalaId = req.params.id;
+// Router.delete('/:id', (req, res) => {
+//     console.log('in delete with id:' req.params.id);
+//     const koalaId = req.params.id;
 
-})
+//     const sqlText = `DELETE FROM "koalas" WHERE "id" = $1;`
+//     const sqlParams = [koalaId];
+
+// });
 
 module.exports = koalaRouter;
