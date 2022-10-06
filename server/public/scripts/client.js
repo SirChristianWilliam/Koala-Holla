@@ -36,5 +36,14 @@ function getKoalas(){
 function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
   // ajax call to server to get koalas
- 
+  $.ajax({
+    type: 'POST',
+    url: '/koalas',
+    data: newKoala
+  }).then(function (response) {
+    console.log('response from server', response);
+    refreshKoalas();
+  }).catch(function (error) {
+    console.log('error from POST', error);
+  });
 }

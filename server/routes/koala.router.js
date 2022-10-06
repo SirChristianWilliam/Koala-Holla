@@ -1,3 +1,4 @@
+const { Router } = require('express');
 const express = require('express');
 const koalaRouter = express.Router();
 
@@ -8,7 +9,10 @@ const koalaRouter = express.Router();
 
 
 // POST
-
+koalaRouter.post('/', (req, res) => {
+    let newKoala = req.body;
+    console.log('adding new koala', newKoala);
+});
 
 // PUT
 
