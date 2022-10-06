@@ -2,7 +2,7 @@
 console.log( 'js' );
 
 $( document ).ready( function(){
-  console.log( 'JQ' );
+   console.log( 'JQ' );
   // Establish Click Listeners
   $('#viewKoalas').on('click', '#dltBtn', deleteKoala)
   setupClickListeners();
@@ -13,7 +13,8 @@ $( document ).ready( function(){
 }); // end doc ready
 
 function setupClickListeners() {
-  $( '#addButton' ).on( 'click', function(){
+  $( '#addButton' ).on( 'click', function(evt){
+    evt.preventDefault();
     console.log( 'in addButton on click' );
     // get user input and put in an object
     // NOT WORKING YET :(
@@ -59,8 +60,8 @@ function getKoalas(){
   })
 } // end getKoalas
 
-function deleteKoala(){
-  
+function deleteKoala(evt){
+  evt.preventDefault();
   let koalaId = $(this).data('id');
   console.log('in delete koalas', koalaId);
   
@@ -68,7 +69,7 @@ function deleteKoala(){
     method: 'DELETE',
     url:  `/koalas/${koalaId}`,
   }).then((response) => {
-    console.log('koala TERMINATED');
+    console.log('koala TERMINATED',response);
     getKoalas();
   }).catch((err) => {
     console.log('error on delete', err);
@@ -95,7 +96,8 @@ function koalaTransferClick() {
   $('#viewKoalas').on('click','.MTT', transferStatus);
 }
 
-function transferStatus() {
+function transferStatus(evt) {
+  evt.preventDefault();
     let koalasId = $(this).parent().data('id');
     console.log($(this).parent().data('id'));
     console.log('clicked "ready?" button', koalasId);
@@ -106,6 +108,7 @@ function transferStatus() {
       data: {status: koalasId},
     })
     .then(function (response) {
+      getKoalas();
       console.log('err on PUT ready state',response);
     });
 }

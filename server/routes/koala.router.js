@@ -7,7 +7,7 @@ let koalas = [];
 // GET
 koalaRouter.get('/', (req,res) => {
     pool.query(`
-        SELECT * FROM "koalas";
+        SELECT * FROM "koalas" ORDER BY "id";
     `)
     .then((dbRes) => {
         res.send(dbRes.rows);
@@ -42,8 +42,8 @@ koalaRouter.put('/:id',(req,res) => {
     console.log('in PUT with id: ', req.params.id);
     let slText = ``;
     sqlText = `UPDATE "koalas"
-                SET "ready_to_transfer" = 'true'
-                WHERE "id" = $1`;
+                SET "ready_to_transfer" = NOT "ready_to_transfer"
+                 WHERE "id" = $1`;
 
 const sqlParams = [koalasId];
 
