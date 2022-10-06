@@ -28,7 +28,7 @@ koalaRouter.put('/:id',(req,res) => {
     console.log('in PUT with id: ', req.params.id);
     let slText = ``;
     sqlText = `UPDATE "koalas"
-                SET "ready" = "ready"
+                SET "ready_to_transfer" = 'true'
                 WHERE "id" = $1`;
 
 const sqlParams = [koalasId];

@@ -79,7 +79,7 @@ function transferStatus() {
       data: {status: koalasId},
     })
     .then(function (response) {
-      console.log('err on PUT ready state',error);
+      console.log('err on PUT ready state',response);
     });
 }
 
