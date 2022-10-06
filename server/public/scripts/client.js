@@ -6,6 +6,7 @@ $( document ).ready( function(){
   // Establish Click Listeners
   setupClickListeners()
   // load existing koalas on page load
+  koalaTransferClick();
   getKoalas();
 
 }); // end doc ready
@@ -44,9 +45,9 @@ function getKoalas(){
           <td>${x.name}</td>
           <td>${x.gender}</td>
           <td>${x.age}</td>
-            <td>
+            <td data-id=${x.id}>
               ${x.ready_to_transfer}
-              <button id="MTT"> Ready? </button>
+              <button class="MTT"> Ready? </button>
             </td>
           <td>${x.notes}</td>
             <td>
@@ -62,3 +63,23 @@ function saveKoala( newKoala ){
   // ajax call to server to get koalas
  
 }
+
+function koalaTransferClick() {
+  $('#viewKoalas').on('click','.MTT', transferStatus);
+}
+
+function transferStatus() {
+    let koalasId = $(this).parent().data('id');
+    console.log($(this).parent().data('id'));
+    console.log('clicked "ready?" button', koalasId);
+
+    $.ajax({
+      method: 'PUT',
+      url: `/koalas/${koalasId}`,
+      data: {status: koalasId},
+    })
+    .then(function (response) {
+      console.log('err on PUT ready state',error);
+    });
+}
+

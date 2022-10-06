@@ -4,7 +4,6 @@ const pool = require('../modules/pool');
 let koalas = [];
 // DB CONNECTION
 
-
 // GET
 koalaRouter.get('/', (req,res) => {
     pool.query(`
@@ -22,7 +21,29 @@ koalaRouter.get('/', (req,res) => {
 // POST
 
 
-// PUT
+// PUT  : Chris is working on this.
+
+koalaRouter.put('/:id',(req,res) => {
+    const koalasId = req.params.id;
+    console.log('in PUT with id: ', req.params.id);
+    let slText = ``;
+    sqlText = `UPDATE "koalas"
+                SET "ready" = "ready"
+                WHERE "id" = $1`;
+
+const sqlParams = [koalasId];
+
+pool  
+  .query(sqlText,sqlParams)
+  .then((dbRes) => {
+    res.sendStatus(200);
+  })
+  .catch((err) => {
+    console.log('update failed',err);
+    res.sendStatus(500);
+  });
+
+});
 
 
 // DELETE
