@@ -1,3 +1,4 @@
+
 console.log( 'js' );
 
 $( document ).ready( function(){
@@ -30,7 +31,30 @@ function setupClickListeners() {
 function getKoalas(){
   console.log( 'in getKoalas' );
   // ajax call to server to get koalas
-  
+  $('#viewKoalas').empty();
+  $.ajax({
+    method: 'GET',
+    url: '/koalas'
+  })
+  .then(function(response) {
+    console.log("GET /addKoala response",response);
+    for(let x of response) {
+      $('#viewKoalas').append(`
+        <tr>
+          <td>${x.name}</td>
+          <td>${x.gender}</td>
+          <td>${x.age}</td>
+            <td>
+              ${x.ready_to_transfer}
+              <button id="MTT"> Ready? </button>
+            </td>
+          <td>${x.notes}</td>
+            <td>
+              <button id="dltBtn"> Delete </button>
+            </td>
+      `)
+    }
+  })
 } // end getKoalas
 
 function saveKoala( newKoala ){
