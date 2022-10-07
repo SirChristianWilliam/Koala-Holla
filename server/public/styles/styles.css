@@ -1,3 +1,29 @@
 body {
     background-color: cyan;
 }
+
+input {
+
+    box-sizing: border-box;
+    padding: 10px 0px 10px 8px;
+    border: 3px solid skyblue;
+    font-size: 15px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#addButton {
+    border: 1px solid blue;
+    margin: 5px;
+    padding: 10px 25px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 6px 0px grey;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 18px;
+}
+#addButton:hover {background-color: #28d1f3}
+
+#addButton:active {
+    background-color: #28d1f3;
+    box-shadow: 1px 1px 2px 0px grey;;
+    transform: translateY(3px);
+}
