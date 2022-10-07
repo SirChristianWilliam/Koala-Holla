@@ -1,7 +1,29 @@
 body {
-    background-color: cyan;
+    background-image: linear-gradient(to right,cyan,black);
+    margin:0;
 }
+ #section2 {
+    margin-bottom:400px;
+}
+table {
+    width:50%;
+    margin-left:50px;
 
+}
+table,th,td {
+    border:2px solid black;
+    padding:15px;
+    border-collapse: collapse;
+    text-align:center;
+}
+th {
+    padding:20px 20px;
+    font-size: 20px;
+    background-image:linear-gradient(cyan,black)
+}
+.allKoalasH2 {
+    margin-left:50px;
+}
 img {
     height: 200px;
     width: 200px;
@@ -10,6 +32,39 @@ img {
 
 header {
     display: flex;
-    background-color: rgb(46, 98, 238);
+    background-image:linear-gradient(cyan,rgb(29, 27, 27));
     padding: 25px;
+}
+
+.MTT, #dltBtn {
+    border:1px solid black;
+    border-radius:10px;
+    cursor: pointer;
+    position:relative;
+    display:inline;
+    padding:5px;
+    background-color: rgba(255,255,255,.5);
+    color:black;
+    width:60px;
+    height:25px;
+    margin-top:5px;
+}
+.MTT:hover, #dltBtn:hover {
+ box-shadow:0px 0px 10px black;
+ background-color: rgba(255,255,255,1);
+ }
+.MTT:active, #dltBtn:active{
+    outline:2px solid black;
+    background-color: black;
+    color:cyan;
+}
+
+tr:nth-child(even) {
+    background-image:linear-gradient(cyan,rgb(29, 27, 27));
+    color: black;
+}
+
+tr:nth-child(odd) {
+    background-image:linear-gradient(rgb(29, 27, 27),cyan);
+    color: black;
 }

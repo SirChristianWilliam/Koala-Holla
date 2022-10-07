@@ -48,7 +48,7 @@ function getKoalas(){
           <td>${x.gender}</td>
           <td>${x.age}</td>
             <td data-id=${x.id}>
-              ${x.ready_to_transfer}
+              ${x.ready_to_transfer}<br>
               <button class="MTT"> Ready? </button>
             </td>
           <td>${x.notes}</td>
