@@ -84,7 +84,6 @@ input {
     font-family: Helvetica, Arial, sans-serif;
     border-radius:15px;
 }
-
 input:focus {
    background-color: rgb(194, 161, 117);
 }
