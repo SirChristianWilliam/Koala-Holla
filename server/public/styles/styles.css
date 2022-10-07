@@ -1,3 +1,20 @@
 body {
-    background-color: cyan;
+    background-image: linear-gradient(to right,rgb(105, 149, 153),rgb(16, 59, 74));
+    margin:0;
+}
+#section2 {
+    margin-bottom:400px;
+}
+table {
+    width:50%;
+    margin-left:50px;
+
+}
+table,th,td {
+    border:2px solid black;
+    padding:5px;
+    border-collapse: collapse;
+}
+.allKoalasH2 {
+    margin-left:50px;
 }
