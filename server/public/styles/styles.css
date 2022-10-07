@@ -65,12 +65,6 @@ tr:nth-child(even) {
      color: black;
 }
 
-<<<<<<< HEAD
-tr:nth-child(odd) {
-    background-image:linear-gradient(rgb(29, 27, 27),cyan);
-    color: black;
-}
-
 input {
 
     box-sizing: border-box;
@@ -96,8 +90,7 @@ input {
     box-shadow: 1px 1px 2px 0px grey;;
     transform: translateY(3px);
 }
-=======
-tr:nth-child(odd:not(th)) {
+ tr:nth-child(odd:not(th)) {
       color: white;
 }
->>>>>>> tableWork
+ 
