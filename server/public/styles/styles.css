@@ -1,5 +1,5 @@
 body {
-    background-image: linear-gradient(to right,cyan,black);
+    background-image: linear-gradient(to right,grey,white,rgb(5, 32, 32));
     margin:0;
 }
  #section2 {
@@ -19,8 +19,8 @@ table,th,td {
 th {
     padding:20px 20px;
     font-size: 20px;
-    background-image:linear-gradient(cyan,black)
-}
+    background-color: rgb(194, 161, 117);
+ }
 .allKoalasH2 {
     margin-left:50px;
 }
@@ -33,6 +33,7 @@ img {
 header {
     display: flex;
      padding: 25px;
+     background-color: antiquewhite;
 }
 
 .MTT, #dltBtn {
@@ -59,11 +60,10 @@ header {
 }
 
 tr:nth-child(even) {
-    background-image:linear-gradient(cyan,rgb(29, 27, 27));
-    color: black;
+    background-color: antiquewhite;
+     color: black;
 }
 
-tr:nth-child(odd) {
-    background-image:linear-gradient(rgb(29, 27, 27),cyan);
-    color: black;
+tr:nth-child(odd:not(th)) {
+      color: white;
 }
