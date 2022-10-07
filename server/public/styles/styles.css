@@ -2,21 +2,6 @@ body {
     background-color: cyan;
 }
 
-<<<<<<< HEAD
-
-=======
-img {
-    height: 200px;
-    width: 200px;
-    padding-right: 25px;
-}
-
-header {
-    display: flex;
-    background-color: rgb(46, 98, 238);
-    padding: 25px;
->>>>>>> main
-}
 input {
 
     box-sizing: border-box;
@@ -41,3 +26,4 @@ input {
     background-color: #28d1f3;
     box-shadow: 1px 1px 2px 0px grey;;
     transform: translateY(3px);
+}
